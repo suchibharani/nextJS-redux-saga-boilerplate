@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux';
+import PropTypes from 'prop-types'
 
 // Import actions
 import * as mapActions from '../actions';
@@ -50,5 +51,13 @@ function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(
     mapActions, dispatch)}
 }
+
+
+Counter.propTypes = {
+  actions: PropTypes.any,
+  count: PropTypes.any
+};
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Counter)

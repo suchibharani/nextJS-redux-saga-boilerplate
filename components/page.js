@@ -1,3 +1,6 @@
+import React  from 'react';
+import PropTypes from 'prop-types'
+
 import Link from 'next/link'
 import { connect } from 'react-redux'
 
@@ -5,8 +8,6 @@ import Counter from './counter'
 
 function Page({
   error,
-  lastUpdate,
-  light,
   linkTo,
   NavigateTo,
   placeholderData,
@@ -30,5 +31,14 @@ function Page({
     </div>
   )
 }
+
+Page.propTypes = {
+  error: PropTypes.any,
+  linkTo: PropTypes.any,
+  title: PropTypes.any,
+  NavigateTo: PropTypes.any,
+  placeholderData: PropTypes.any
+};
+
 
 export default connect(state => state)(Page)

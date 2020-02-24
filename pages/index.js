@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { loadData, startClock, tickClock } from '../actions/index'
+import { loadData } from '../actions/index'
 import Page from '../components/page'
 import {bindActionCreators} from 'redux';
 

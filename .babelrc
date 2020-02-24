@@ -1,0 +1,28 @@
+{
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      "inline-dotenv", ["module-resolver", {
+        "root": ["./src"]
+      }],
+      ["inline-import-data-uri", {
+        "extensions": [
+          ".html",
+          ".jpg"
+        ]
+      }]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          ["next/babel", {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }]
+        ]
+      }
+    }
+  }
+  
