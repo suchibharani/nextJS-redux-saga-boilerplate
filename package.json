@@ -4,19 +4,26 @@
   "license": "ISC",
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "build": "NODE_ENV=production next build",
+    "build-stage": "NODE_ENV=staging next build",
+    "start": "NODE_ENV=development PORT=3200 node server/index.js",
+    "serve": "NODE_ENV=production PORT=3500 node server/index.js",
+    "stage": "NODE_ENV=staging PORT=3300 node server/index.js"
   },
   "dependencies": {
     "es6-promise": "4.1.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
     "isomorphic-unfetch": "2.0.0",
     "next": "latest",
     "next-redux-saga": "4.0.0",
     "next-redux-wrapper": "2.0.0",
+    "next-routes": "^1.4.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "5.0.7",
     "redux": "4.0.1",
+    "redux-logger": "^3.0.6",
     "redux-saga": "1.0.1"
   },
   "devDependencies": {

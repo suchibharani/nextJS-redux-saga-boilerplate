@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux';
 
-import { increment, decrement, reset } from '../actions'
+// Import actions
+import * as mapActions from '../actions';
+
 
 class Counter extends Component {
   increment = () => {
-    this.props.dispatch(increment())
+    this.props.actions.increment();
   }
 
   decrement = () => {
-    this.props.dispatch(decrement())
+    this.props.actions.decrement();
   }
 
   reset = () => {
-    this.props.dispatch(reset())
+    this.props.actions.reset();
   }
 
   render() {
@@ -36,5 +39,16 @@ class Counter extends Component {
   }
 }
 
-const mapStateToProps = ({ count }) => ({ count })
-export default connect(mapStateToProps)(Counter)
+function mapStateToProps(state) {
+  return {
+    count : state.count,
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(
+    mapActions, dispatch)}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Counter)

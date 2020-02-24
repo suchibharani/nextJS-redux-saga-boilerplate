@@ -1,15 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { loadData, startClock, tickClock } from '../actions'
+import { loadData, startClock, tickClock } from '../actions/index'
 import Page from '../components/page'
+import {bindActionCreators} from 'redux';
 
+// Import actions
+import * as mapActions from '../actions';
 class Index extends React.Component {
   static async getInitialProps(props) {
     const { store, isServer } = props.ctx
-    store.dispatch(tickClock(isServer))
 
-    if (!store.getState().placeholderData) {
+    if (!store.getState().placeholderData.length > 0) {
       store.dispatch(loadData())
     }
 
@@ -17,7 +19,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(startClock())
+      // this.props.actions.loadData();
   }
 
   render() {
@@ -25,4 +27,20 @@ class Index extends React.Component {
   }
 }
 
-export default connect()(Index)
+
+
+function mapStateToProps(state) {
+  return {
+    count : state.count,
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(
+    mapActions, dispatch)}
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Index)
