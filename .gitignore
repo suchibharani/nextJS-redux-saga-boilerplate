@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -18,6 +19,21 @@
 # misc
 .DS_Store
 .env*
+*~
+*.pyc
+.grunt
+_SpecRunner.html
+__benchmarks__
+.module-cache
+*.log*
+chrome-user-data
+*.sublime-project
+*.sublime-workspace
+.idea
+*.iml
+.vscode
+*.swp
+*.swo
 
 # debug
 npm-debug.log*
